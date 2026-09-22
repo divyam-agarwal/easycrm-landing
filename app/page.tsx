@@ -202,7 +202,7 @@ export default function Home() {
           <Container className="relative py-20 sm:py-28">
             <div className="max-w-3xl">
               <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-teal-300">
-                Built for chemicals &amp; minerals
+                Built for industrial manufacturers &amp; distributors
               </p>
               <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.4rem]">
                 The CRM that understands tonnage, not just tickets.
@@ -237,7 +237,7 @@ export default function Home() {
           <div className="relative border-t border-white/10">
             <Container className="grid grid-cols-2 gap-px sm:grid-cols-4">
               {[
-                ["Built for", "Chemicals & minerals"],
+                ["Built for", "Manufacturers & distributors"],
                 ["Setup", "Import from Excel"],
                 ["Trial", "14 days, no card"],
                 ["Support", "India, IST hours"],
