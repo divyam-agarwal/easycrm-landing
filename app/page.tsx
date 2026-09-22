@@ -1,8 +1,11 @@
 import { Container, Eyebrow, Footer, Header } from "./components/site";
+import { DemoForm } from "./components/demo-form";
 
 // TODO: replace with a real endpoint (Formspree / Resend / your own API route).
 // Until this is set, the demo form falls back to an email link.
 const FORM_ENDPOINT = "";
+
+const CONTACT_EMAIL = "hello@saatvikminchem.com";
 
 const features = [
   {
@@ -35,7 +38,7 @@ const steps = [
   {
     n: "01",
     title: "Import what you already have",
-    body: "Bring in your buyer list, product grades and open enquiries from Excel. Most teams are live inside a working day — no implementation consultant required.",
+    body: "Bring in your buyer list, product grades and open enquiries from Excel. You can be working the same day — no implementation consultant and no six-week onboarding.",
   },
   {
     n: "02",
@@ -111,7 +114,7 @@ const faqs = [
   },
   {
     q: "How long does it take to get running?",
-    a: "Most teams import buyers and open enquiries from Excel and start working the same day. Batch traceability and price lists usually take a few more days to set up properly with your grade list.",
+    a: "Importing buyers and open enquiries from Excel takes under an hour, so you can start working the same day. Batch traceability and price lists take a little longer to set up properly against your grade list.",
   },
   {
     q: "Our sales happen on WhatsApp. Is that a problem?",
@@ -119,7 +122,7 @@ const faqs = [
   },
   {
     q: "Can we try it before committing?",
-    a: "Yes — 14 days, no card required. We will import a slice of your real data so you are evaluating it against your own book rather than a demo dataset.",
+    a: "Yes — 14 days, no card required. Send a slice of your real data and you can evaluate it against your own book rather than a demo dataset.",
   },
 ];
 
@@ -173,10 +176,10 @@ export default function Home() {
           <div className="relative border-t border-white/10">
             <Container className="grid grid-cols-2 gap-px sm:grid-cols-4">
               {[
-                ["Quote to order", "42% faster"],
-                ["Data entry", "6 hrs saved / week"],
-                ["Live in", "1 working day"],
-                ["Built in", "India"],
+                ["Built for", "Chemicals & minerals"],
+                ["Setup", "Import from Excel"],
+                ["Trial", "14 days, no card"],
+                ["Support", "India, IST hours"],
               ].map(([label, value]) => (
                 <div key={label} className="py-7 sm:py-8">
                   <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-white/40">
@@ -382,7 +385,7 @@ export default function Home() {
               <div>
                 <Eyebrow>Questions</Eyebrow>
                 <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-                  The things distributors actually ask us.
+                  The questions worth asking before you switch.
                 </h2>
               </div>
               <div className="divide-y divide-ink-900/12 border-y border-ink-900/12">
@@ -429,56 +432,15 @@ export default function Home() {
                 <p className="mt-8 text-sm text-white/45">
                   Prefer email?{" "}
                   <a
-                    href="mailto:hello@saatvikminchem.com"
+                    href={`mailto:${CONTACT_EMAIL}`}
                     className="text-copper-300 underline underline-offset-4 hover:text-copper-100"
                   >
-                    hello@saatvikminchem.com
+                    {CONTACT_EMAIL}
                   </a>
                 </p>
               </div>
 
-              <form
-                {...(FORM_ENDPOINT
-                  ? { action: FORM_ENDPOINT, method: "post" }
-                  : { action: "mailto:hello@saatvikminchem.com", method: "post" })}
-                className="rounded-xl border border-white/12 bg-white/[0.04] p-6 sm:p-8"
-              >
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Name" name="name" autoComplete="name" />
-                  <Field label="Company" name="company" autoComplete="organization" />
-                  <Field
-                    label="Work email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                  />
-                  <Field label="Phone" name="phone" type="tel" autoComplete="tel" />
-                </div>
-                <div className="mt-5">
-                  <label
-                    htmlFor="about"
-                    className="mb-2 block text-sm text-white/70"
-                  >
-                    What do you trade in?
-                  </label>
-                  <textarea
-                    id="about"
-                    name="about"
-                    rows={3}
-                    placeholder="e.g. industrial minerals, 40 active buyers, 6 sales staff"
-                    className="w-full rounded-md border border-white/15 bg-ink-900 px-3.5 py-2.5 text-white placeholder:text-white/30 focus:border-copper-400 focus:outline-none focus:ring-1 focus:ring-copper-400"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="mt-6 w-full rounded-md bg-copper-500 px-5 py-3 text-sm font-medium transition-colors hover:bg-copper-600"
-                >
-                  Request a demo
-                </button>
-                <p className="mt-3 text-center text-xs text-white/40">
-                  We reply within one working day.
-                </p>
-              </form>
+              <DemoForm endpoint={FORM_ENDPOINT} email={CONTACT_EMAIL} />
             </div>
           </Container>
         </section>
@@ -486,33 +448,5 @@ export default function Home() {
 
       <Footer />
     </>
-  );
-}
-
-function Field({
-  label,
-  name,
-  type = "text",
-  autoComplete,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  autoComplete?: string;
-}) {
-  return (
-    <div>
-      <label htmlFor={name} className="mb-2 block text-sm text-white/70">
-        {label}
-      </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        autoComplete={autoComplete}
-        required
-        className="w-full rounded-md border border-white/15 bg-ink-900 px-3.5 py-2.5 text-white placeholder:text-white/30 focus:border-copper-400 focus:outline-none focus:ring-1 focus:ring-copper-400"
-      />
-    </div>
   );
 }
