@@ -1,7 +1,9 @@
 # EasyCRM — landing page
 
 Marketing site for EasyCRM, a CRM positioned for chemicals & minerals
-distributors. Target domain: **saatvikminchem.com**
+distributors.
+
+**Live at <https://saatvikminchem.com>** — deployed from `main` via GitHub Pages.
 
 ## Stack
 
@@ -38,8 +40,6 @@ The workflow picks its base path automatically: with no `public/CNAME` it
 builds for the project subpath (`/easycrm-landing`); once `public/CNAME`
 exists it builds for the domain root. So moving to the custom domain is a
 one-file change.
-
-Live now at <https://divyam-agarwal.github.io/easycrm-landing/>
 
 ## Connecting the domain
 
