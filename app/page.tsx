@@ -1,69 +1,518 @@
-import Image from "next/image";
+import { Container, Eyebrow, Footer, Header } from "./components/site";
+
+// TODO: replace with a real endpoint (Formspree / Resend / your own API route).
+// Until this is set, the demo form falls back to an email link.
+const FORM_ENDPOINT = "";
+
+const features = [
+  {
+    title: "Quotations that speak your language",
+    body: "Grade, assay, packing, incoterm and price per MT — built into the quote, not stuffed into a notes field. Revise a quote and every version stays on record.",
+  },
+  {
+    title: "Batch and COA traceability",
+    body: "Link each dispatch to its batch number and certificate of analysis. When a buyer queries a consignment two years later, it takes ten seconds to answer.",
+  },
+  {
+    title: "Repeat-buyer intelligence",
+    body: "See who reorders every quarter and who has gone quiet. EasyCRM flags the accounts drifting off their usual cycle before you lose them.",
+  },
+  {
+    title: "Credit terms you can see",
+    body: "Outstanding, ageing and credit limit sit on the account page. Your team knows before they promise 90 days to a buyer already 120 days overdue.",
+  },
+  {
+    title: "Sample to order tracking",
+    body: "Most industrial deals start with a sample. Track dispatch, follow-up and approval so samples turn into orders instead of quietly dying.",
+  },
+  {
+    title: "Price lists that hold up",
+    body: "Versioned price lists per buyer and per grade, with landed-cost workings attached. No more hunting for which rate was agreed in March.",
+  },
+];
+
+const steps = [
+  {
+    n: "01",
+    title: "Import what you already have",
+    body: "Bring in your buyer list, product grades and open enquiries from Excel. Most teams are live inside a working day — no implementation consultant required.",
+  },
+  {
+    n: "02",
+    title: "Run enquiries through one pipeline",
+    body: "Every enquiry, quote, sample and order moves through stages your team actually uses. Nothing sits in an inbox where only one person can see it.",
+  },
+  {
+    n: "03",
+    title: "Know your book cold",
+    body: "Open quote value, expected dispatch, ageing receivables and reorder risk — on one screen, updated as your team works rather than at month end.",
+  },
+];
+
+const tiers = [
+  {
+    name: "Starter",
+    price: "₹2,400",
+    unit: "/month",
+    note: "Up to 3 users",
+    body: "For a small trading desk getting off spreadsheets.",
+    features: [
+      "Buyer & supplier records",
+      "Enquiry-to-order pipeline",
+      "Quotations with grade specs",
+      "Email support",
+    ],
+    cta: "Start free trial",
+    featured: false,
+  },
+  {
+    name: "Growth",
+    price: "₹6,900",
+    unit: "/month",
+    note: "Up to 10 users",
+    body: "For distributors running samples, credit and repeat accounts.",
+    features: [
+      "Everything in Starter",
+      "Batch & COA traceability",
+      "Credit limits and ageing",
+      "Versioned price lists",
+      "Reorder-risk alerts",
+      "WhatsApp & email logging",
+    ],
+    cta: "Start free trial",
+    featured: true,
+  },
+  {
+    name: "Enterprise",
+    price: "Talk to us",
+    unit: "",
+    note: "Unlimited users",
+    body: "For multi-location operations with their own ERP.",
+    features: [
+      "Everything in Growth",
+      "Tally / SAP / ERP sync",
+      "Custom roles & approvals",
+      "Onboarding & data migration",
+      "Dedicated account manager",
+    ],
+    cta: "Book a demo",
+    featured: false,
+  },
+];
+
+const faqs = [
+  {
+    q: "Is this just a generic CRM with chemical words pasted on?",
+    a: "No. Grades, assays, packing, batch numbers, COAs and price-per-tonne are first-class fields, not custom fields you have to build yourself. A generic CRM can be bent into this shape over several weeks of configuration — EasyCRM arrives that way.",
+  },
+  {
+    q: "We already run Tally. Does this replace it?",
+    a: "It does not. Tally stays your book of record for accounting. EasyCRM handles everything before the invoice — enquiries, quotes, samples, follow-ups — and syncs the resulting orders across on the Enterprise plan.",
+  },
+  {
+    q: "How long does it take to get running?",
+    a: "Most teams import buyers and open enquiries from Excel and start working the same day. Batch traceability and price lists usually take a few more days to set up properly with your grade list.",
+  },
+  {
+    q: "Our sales happen on WhatsApp. Is that a problem?",
+    a: "It is the normal case in this industry, so EasyCRM is built for it. Conversations can be logged against the buyer record so the deal history survives a salesperson leaving.",
+  },
+  {
+    q: "Can we try it before committing?",
+    a: "Yes — 14 days, no card required. We will import a slice of your real data so you are evaluating it against your own book rather than a demo dataset.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <Header />
+
+      <main id="top">
+        {/* Hero */}
+        <section className="relative overflow-hidden bg-ink-950 text-white">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -top-40 left-1/2 h-[34rem] w-[64rem] -translate-x-1/2 rounded-full bg-copper-500/18 blur-[120px]"
+          />
+          <Container className="relative py-20 sm:py-28">
+            <div className="max-w-3xl">
+              <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-copper-300">
+                Built for chemicals &amp; minerals
+              </p>
+              <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.4rem]">
+                The CRM that understands tonnage, not just tickets.
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70">
+                EasyCRM keeps quotations, grade specs, batch records and
+                repeat-buyer follow-ups in one place — so your desk stops
+                running on spreadsheets, WhatsApp threads and the one person
+                who remembers everything.
+              </p>
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href="#demo"
+                  className="rounded-md bg-copper-500 px-6 py-3 text-center text-sm font-medium transition-colors hover:bg-copper-600"
+                >
+                  Book a 20-minute demo
+                </a>
+                <a
+                  href="#features"
+                  className="rounded-md border border-white/20 px-6 py-3 text-center text-sm font-medium text-white/85 transition-colors hover:border-white/40 hover:text-white"
+                >
+                  See what it does
+                </a>
+              </div>
+              <p className="mt-5 text-sm text-white/45">
+                14-day trial · No card required · Import from Excel in an hour
+              </p>
+            </div>
+          </Container>
+
+          {/* Trust strip */}
+          <div className="relative border-t border-white/10">
+            <Container className="grid grid-cols-2 gap-px sm:grid-cols-4">
+              {[
+                ["Quote to order", "42% faster"],
+                ["Data entry", "6 hrs saved / week"],
+                ["Live in", "1 working day"],
+                ["Built in", "India"],
+              ].map(([label, value]) => (
+                <div key={label} className="py-7 sm:py-8">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-white/40">
+                    {label}
+                  </p>
+                  <p className="mt-1.5 text-xl font-semibold text-copper-300">
+                    {value}
+                  </p>
+                </div>
+              ))}
+            </Container>
+          </div>
+        </section>
+
+        {/* Problem */}
+        <section className="border-b border-ink-900/10 bg-copper-50/60 py-20 sm:py-24">
+          <Container>
+            <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
+              <div>
+                <Eyebrow>The problem</Eyebrow>
+                <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+                  Your pipeline is real. It is just scattered across five
+                  places.
+                </h2>
+              </div>
+              <div className="space-y-5 text-lg leading-relaxed text-ink-700">
+                <p>
+                  The enquiry came in on WhatsApp. The quote is in someone&apos;s
+                  Sent folder. The agreed rate was settled on a call. The COA
+                  is a photo on a phone. The buyer&apos;s outstanding is in Tally,
+                  which the sales team cannot open.
+                </p>
+                <p>
+                  None of that is a discipline problem — it is what happens
+                  when the tools were never built for how industrial distribution
+                  actually works. Generic CRMs assume a software sales cycle:
+                  clean stages, credit cards, no batch numbers, no 90-day terms.
+                </p>
+                <p className="font-medium text-ink-900">
+                  EasyCRM starts from your workflow instead of asking you to
+                  adopt someone else&apos;s.
+                </p>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Features */}
+        <section id="features" className="scroll-mt-16 py-20 sm:py-28">
+          <Container>
+            <div className="max-w-2xl">
+              <Eyebrow>What you get</Eyebrow>
+              <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+                Everything the desk needs. Nothing it doesn&apos;t.
+              </h2>
+            </div>
+            <div className="mt-14 grid gap-px overflow-hidden rounded-xl bg-ink-900/10 sm:grid-cols-2 lg:grid-cols-3">
+              {features.map((f) => (
+                <div key={f.title} className="bg-white p-7 sm:p-8">
+                  <h3 className="text-lg font-semibold tracking-tight">
+                    {f.title}
+                  </h3>
+                  <p className="mt-3 leading-relaxed text-ink-700">{f.body}</p>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        {/* How it works */}
+        <section
+          id="how"
+          className="scroll-mt-16 bg-ink-950 py-20 text-white sm:py-28"
+        >
+          <Container>
+            <div className="max-w-2xl">
+              <p className="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-copper-400">
+                How it works
+              </p>
+              <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+                Three steps. No six-month rollout.
+              </h2>
+            </div>
+            <ol className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
+              {steps.map((s) => (
+                <li key={s.n} className="border-t border-white/15 pt-6">
+                  <span className="font-mono text-sm text-copper-400">
+                    {s.n}
+                  </span>
+                  <h3 className="mt-3 text-xl font-semibold tracking-tight">
+                    {s.title}
+                  </h3>
+                  <p className="mt-3 leading-relaxed text-white/65">{s.body}</p>
+                </li>
+              ))}
+            </ol>
+          </Container>
+        </section>
+
+        {/* Pricing */}
+        <section id="pricing" className="scroll-mt-16 py-20 sm:py-28">
+          <Container>
+            <div className="max-w-2xl">
+              <Eyebrow>Pricing</Eyebrow>
+              <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+                Priced for a trading desk, not a tech company.
+              </h2>
+              <p className="mt-4 text-lg text-ink-700">
+                Billed monthly. Cancel any time. All plans include the full
+                enquiry-to-order pipeline.
+              </p>
+            </div>
+            <div className="mt-14 grid gap-6 lg:grid-cols-3">
+              {tiers.map((t) => (
+                <div
+                  key={t.name}
+                  className={`flex flex-col rounded-xl border p-7 sm:p-8 ${
+                    t.featured
+                      ? "border-copper-500 bg-ink-950 text-white shadow-xl shadow-ink-900/10"
+                      : "border-ink-900/12 bg-white"
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="text-lg font-semibold tracking-tight">
+                      {t.name}
+                    </h3>
+                    {t.featured && (
+                      <span className="rounded-full bg-copper-500 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
+                        Most picked
+                      </span>
+                    )}
+                  </div>
+                  <p
+                    className={`mt-1.5 text-sm ${
+                      t.featured ? "text-white/55" : "text-ink-600"
+                    }`}
+                  >
+                    {t.note}
+                  </p>
+                  <p className="mt-6 flex items-baseline gap-1.5">
+                    <span className="text-4xl font-semibold tracking-tight">
+                      {t.price}
+                    </span>
+                    <span
+                      className={
+                        t.featured ? "text-white/55" : "text-ink-600"
+                      }
+                    >
+                      {t.unit}
+                    </span>
+                  </p>
+                  <p
+                    className={`mt-4 leading-relaxed ${
+                      t.featured ? "text-white/70" : "text-ink-700"
+                    }`}
+                  >
+                    {t.body}
+                  </p>
+                  <ul className="mt-6 flex-1 space-y-2.5 text-sm">
+                    {t.features.map((f) => (
+                      <li key={f} className="flex gap-2.5">
+                        <span
+                          aria-hidden
+                          className={
+                            t.featured ? "text-copper-400" : "text-copper-500"
+                          }
+                        >
+                          ✓
+                        </span>
+                        <span
+                          className={
+                            t.featured ? "text-white/80" : "text-ink-700"
+                          }
+                        >
+                          {f}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href="#demo"
+                    className={`mt-8 rounded-md px-5 py-3 text-center text-sm font-medium transition-colors ${
+                      t.featured
+                        ? "bg-copper-500 text-white hover:bg-copper-600"
+                        : "border border-ink-900/15 hover:border-ink-900/35"
+                    }`}
+                  >
+                    {t.cta}
+                  </a>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        {/* FAQ */}
+        <section
+          id="faq"
+          className="scroll-mt-16 border-y border-ink-900/10 bg-copper-50/60 py-20 sm:py-28"
+        >
+          <Container>
+            <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+              <div>
+                <Eyebrow>Questions</Eyebrow>
+                <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+                  The things distributors actually ask us.
+                </h2>
+              </div>
+              <div className="divide-y divide-ink-900/12 border-y border-ink-900/12">
+                {faqs.map((f) => (
+                  <details key={f.q} className="group py-5">
+                    <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-lg font-medium tracking-tight marker:content-none">
+                      {f.q}
+                      <span
+                        aria-hidden
+                        className="mt-1 shrink-0 text-copper-500 transition-transform group-open:rotate-45"
+                      >
+                        +
+                      </span>
+                    </summary>
+                    <p className="mt-3 max-w-2xl leading-relaxed text-ink-700">
+                      {f.a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Demo / CTA */}
+        <section
+          id="demo"
+          className="scroll-mt-16 bg-ink-950 py-20 text-white sm:py-28"
+        >
+          <Container>
+            <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+              <div>
+                <p className="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-copper-400">
+                  Book a demo
+                </p>
+                <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+                  Twenty minutes, your own data, no slide deck.
+                </h2>
+                <p className="mt-5 max-w-lg text-lg leading-relaxed text-white/70">
+                  Send us a slice of your buyer list and open enquiries. We will
+                  load it in and walk your team through their own book — not a
+                  demo account full of invented companies.
+                </p>
+                <p className="mt-8 text-sm text-white/45">
+                  Prefer email?{" "}
+                  <a
+                    href="mailto:hello@saatvikminchem.com"
+                    className="text-copper-300 underline underline-offset-4 hover:text-copper-100"
+                  >
+                    hello@saatvikminchem.com
+                  </a>
+                </p>
+              </div>
+
+              <form
+                {...(FORM_ENDPOINT
+                  ? { action: FORM_ENDPOINT, method: "post" }
+                  : { action: "mailto:hello@saatvikminchem.com", method: "post" })}
+                className="rounded-xl border border-white/12 bg-white/[0.04] p-6 sm:p-8"
+              >
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <Field label="Name" name="name" autoComplete="name" />
+                  <Field label="Company" name="company" autoComplete="organization" />
+                  <Field
+                    label="Work email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                  />
+                  <Field label="Phone" name="phone" type="tel" autoComplete="tel" />
+                </div>
+                <div className="mt-5">
+                  <label
+                    htmlFor="about"
+                    className="mb-2 block text-sm text-white/70"
+                  >
+                    What do you trade in?
+                  </label>
+                  <textarea
+                    id="about"
+                    name="about"
+                    rows={3}
+                    placeholder="e.g. industrial minerals, 40 active buyers, 6 sales staff"
+                    className="w-full rounded-md border border-white/15 bg-ink-900 px-3.5 py-2.5 text-white placeholder:text-white/30 focus:border-copper-400 focus:outline-none focus:ring-1 focus:ring-copper-400"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="mt-6 w-full rounded-md bg-copper-500 px-5 py-3 text-sm font-medium transition-colors hover:bg-copper-600"
+                >
+                  Request a demo
+                </button>
+                <p className="mt-3 text-center text-xs text-white/40">
+                  We reply within one working day.
+                </p>
+              </form>
+            </div>
+          </Container>
+        </section>
       </main>
+
+      <Footer />
+    </>
+  );
+}
+
+function Field({
+  label,
+  name,
+  type = "text",
+  autoComplete,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  autoComplete?: string;
+}) {
+  return (
+    <div>
+      <label htmlFor={name} className="mb-2 block text-sm text-white/70">
+        {label}
+      </label>
+      <input
+        id={name}
+        name={name}
+        type={type}
+        autoComplete={autoComplete}
+        required
+        className="w-full rounded-md border border-white/15 bg-ink-900 px-3.5 py-2.5 text-white placeholder:text-white/30 focus:border-copper-400 focus:outline-none focus:ring-1 focus:ring-copper-400"
+      />
     </div>
   );
 }
