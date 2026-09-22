@@ -34,9 +34,12 @@ The site is host-agnostic because it exports to static files. Two paths:
 Requires the repo to be **public** (GitHub Pages is not available for private
 repos on the free plan), and Pages set to "GitHub Actions" as its source.
 
-For a project subpath (`/easycrm-landing`) the workflow sets
-`NEXT_PUBLIC_BASE_PATH`. **Delete that line once the custom domain is live**,
-and add a `public/CNAME` file containing `saatvikminchem.com`.
+The workflow picks its base path automatically: with no `public/CNAME` it
+builds for the project subpath (`/easycrm-landing`); once `public/CNAME`
+exists it builds for the domain root. So moving to the custom domain is a
+one-file change.
+
+Live now at <https://divyam-agarwal.github.io/easycrm-landing/>
 
 ## Connecting the domain
 
@@ -45,8 +48,18 @@ Google Workspace email runs off the same zone.
 
 1. Squarespace → Domains → saatvikminchem.com → **disconnect from the parking
    page**. Until this is done the auto-managed A records cannot be removed.
-2. Replace the `@` A records and the `www` CNAME with the host's values.
-3. **Leave the MX and SPF TXT records untouched** — they carry Google
+2. Add these records (GitHub Pages' apex IPs are fixed):
+
+   | Type | Host | Value |
+   | --- | --- | --- |
+   | A | `@` | `185.199.108.153` |
+   | A | `@` | `185.199.109.153` |
+   | A | `@` | `185.199.110.153` |
+   | A | `@` | `185.199.111.153` |
+   | CNAME | `www` | `divyam-agarwal.github.io` |
+
+3. Then: `echo saatvikminchem.com > public/CNAME && git commit && git push`
+4. **Leave the MX and SPF TXT records untouched** — they carry Google
    Workspace email. Removing them silently breaks mail.
 
 ## Known gaps
