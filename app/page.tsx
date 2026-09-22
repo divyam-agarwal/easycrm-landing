@@ -106,8 +106,8 @@ const tiers = [
 
 const faqs = [
   {
-    q: "Is this just a generic CRM with chemical words pasted on?",
-    a: "No. Grades, assays, packing, batch numbers, COAs and price-per-tonne are first-class fields, not custom fields you have to build yourself. A generic CRM can be bent into this shape over several weeks of configuration — EasyCRM arrives that way.",
+    q: "Is this just a generic CRM with industry words pasted on?",
+    a: "No. Grades, assays, packing, batch numbers, COAs and price-per-tonne are first-class fields, not custom fields you have to build yourself. If you sell a physical product by weight or specification — chemicals, minerals, polymers, metals — a generic CRM can be bent into this shape over several weeks of configuration. EasyCRM arrives that way.",
   },
   {
     q: "We already run Tally. Does this replace it?",
@@ -138,7 +138,7 @@ function StructuredData() {
     url: SITE_URL,
     email: CONTACT_EMAIL,
     description:
-      "CRM software for chemicals and minerals distributors, covering quotations, batch traceability and repeat-buyer follow-ups.",
+      "CRM software for industrial distributors and manufacturers, covering quotations, batch traceability and repeat-buyer follow-ups.",
   };
 
   const software = {
@@ -151,7 +151,7 @@ function StructuredData() {
     url: SITE_URL,
     publisher: { "@id": `${SITE_URL}/#organization` },
     description:
-      "A CRM built for chemicals and minerals distributors: grade-aware quotations, batch and COA traceability, credit terms and reorder-risk alerts.",
+      "A CRM for industrial distributors and manufacturers who sell by weight and specification: grade-aware quotations, batch and COA traceability, credit terms and reorder-risk alerts.",
     offers: tiers
       .filter((t) => t.price.startsWith("\u20b9"))
       .map((t) => ({

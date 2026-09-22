@@ -5,9 +5,9 @@ import "./globals.css";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-const title = "EasyCRM — CRM built for chemicals & minerals distributors";
+const title = "EasyCRM — CRM for chemical, mineral & industrial distributors";
 const description =
-  "Quotations, grade specs, batch-linked orders and repeat-buyer follow-ups in one place. The CRM that understands tonnage, COAs and 90-day payment terms.";
+  "Quotations, grade specs, batch-linked orders and repeat-buyer follow-ups in one place. For industrial distributors handling tonnage, COAs and 90-day terms.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://crm.saatvikminchem.com"),
@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   keywords: [
     "chemical distributor CRM",
     "minerals trading software",
+    "industrial distributor CRM",
+    "manufacturing sales CRM",
     "quotation management",
     "B2B industrial CRM",
   ],
