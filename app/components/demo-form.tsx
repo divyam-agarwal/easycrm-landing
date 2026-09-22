@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 
 const inputClass =
-  "w-full rounded-md border border-white/15 bg-ink-900 px-3.5 py-2.5 text-white placeholder:text-white/30 focus:border-copper-400 focus:outline-none focus:ring-1 focus:ring-copper-400";
+  "w-full rounded-md border border-white/15 bg-ink-900 px-3.5 py-2.5 text-white placeholder:text-white/50 focus:border-copper-400 focus:outline-none focus:ring-1 focus:ring-copper-400";
 
 function Field({
   label,
@@ -93,7 +93,7 @@ export function DemoForm({
         <button
           type="button"
           onClick={() => setHandedOff(false)}
-          className="mt-6 text-sm text-white/50 underline underline-offset-4 hover:text-white"
+          className="mt-6 text-sm text-white/60 underline underline-offset-4 hover:text-white"
         >
           Back to the form
         </button>
@@ -132,11 +132,11 @@ export function DemoForm({
       </div>
       <button
         type="submit"
-        className="mt-6 w-full rounded-md bg-copper-500 px-5 py-3 text-sm font-medium transition-colors hover:bg-copper-600"
+        className="mt-6 w-full rounded-md bg-copper-600 px-5 py-3 text-sm font-medium transition-colors hover:bg-copper-700"
       >
         Request a demo
       </button>
-      <p className="mt-3 text-center text-xs text-white/40">
+      <p className="mt-3 text-center text-xs text-white/60">
         We reply within one working day.
       </p>
     </form>

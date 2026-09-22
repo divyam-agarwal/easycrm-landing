@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EasyCRM — landing page
 
-## Getting Started
+Marketing site for EasyCRM, a CRM positioned for chemicals & minerals
+distributors. Target domain: **saatvikminchem.com**
 
-First, run the development server:
+## Stack
+
+Next.js 16 (App Router) · React 19 · Tailwind 4 · static export (`output: "export"`).
+No server runtime — the build produces plain files in `out/`.
+
+## Local development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev        # http://localhost:3000
+pnpm build      # static site → out/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deploying
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The site is host-agnostic because it exports to static files. Two paths:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Vercel (intended host)
 
-## Learn More
+1. Import `divyam-agarwal/easycrm-landing` at vercel.com/new
+2. Framework preset: Next.js. No env vars needed — leave
+   `NEXT_PUBLIC_BASE_PATH` unset so the site serves from the root.
+3. Add `saatvikminchem.com` under Project → Settings → Domains.
+   Vercel prints a **project-specific** A record and CNAME target.
 
-To learn more about Next.js, take a look at the following resources:
+### GitHub Pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`.github/workflows/deploy.yml` builds and publishes on every push to `main`.
+Requires the repo to be **public** (GitHub Pages is not available for private
+repos on the free plan), and Pages set to "GitHub Actions" as its source.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+For a project subpath (`/easycrm-landing`) the workflow sets
+`NEXT_PUBLIC_BASE_PATH`. **Delete that line once the custom domain is live**,
+and add a `public/CNAME` file containing `saatvikminchem.com`.
 
-## Deploy on Vercel
+## Connecting the domain
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The domain is registered at Squarespace and uses Squarespace nameservers.
+Google Workspace email runs off the same zone.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Squarespace → Domains → saatvikminchem.com → **disconnect from the parking
+   page**. Until this is done the auto-managed A records cannot be removed.
+2. Replace the `@` A records and the `www` CNAME with the host's values.
+3. **Leave the MX and SPF TXT records untouched** — they carry Google
+   Workspace email. Removing them silently breaks mail.
+
+## Known gaps
+
+- `FORM_ENDPOINT` in `app/page.tsx` is empty, so the demo form composes a
+  prefilled email in the visitor's mail client. Set it to a Formspree (or
+  similar) endpoint for proper server-side capture.
+- `CONTACT_EMAIL` is `hello@saatvikminchem.com` — confirm that mailbox exists.
+- Pricing figures are a working proposal, not a decided price list.

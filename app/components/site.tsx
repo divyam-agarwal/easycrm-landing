@@ -51,7 +51,7 @@ export function Header() {
         </nav>
         <a
           href="#demo"
-          className="rounded-md bg-copper-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-copper-600"
+          className="rounded-md bg-copper-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-copper-700"
         >
           Book a demo
         </a>

@@ -155,7 +155,7 @@ export default function Home() {
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <a
                   href="#demo"
-                  className="rounded-md bg-copper-500 px-6 py-3 text-center text-sm font-medium transition-colors hover:bg-copper-600"
+                  className="rounded-md bg-copper-600 px-6 py-3 text-center text-sm font-medium transition-colors hover:bg-copper-700"
                 >
                   Book a 20-minute demo
                 </a>
@@ -166,7 +166,7 @@ export default function Home() {
                   See what it does
                 </a>
               </div>
-              <p className="mt-5 text-sm text-white/45">
+              <p className="mt-5 text-sm text-white/60">
                 14-day trial · No card required · Import from Excel in an hour
               </p>
             </div>
@@ -182,7 +182,7 @@ export default function Home() {
                 ["Support", "India, IST hours"],
               ].map(([label, value]) => (
                 <div key={label} className="py-7 sm:py-8">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-white/40">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-white/60">
                     {label}
                   </p>
                   <p className="mt-1.5 text-xl font-semibold text-copper-300">
@@ -307,7 +307,7 @@ export default function Home() {
                       {t.name}
                     </h3>
                     {t.featured && (
-                      <span className="rounded-full bg-copper-500 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
+                      <span className="rounded-full bg-copper-600 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
                         Most picked
                       </span>
                     )}
@@ -363,7 +363,7 @@ export default function Home() {
                     href="#demo"
                     className={`mt-8 rounded-md px-5 py-3 text-center text-sm font-medium transition-colors ${
                       t.featured
-                        ? "bg-copper-500 text-white hover:bg-copper-600"
+                        ? "bg-copper-600 text-white hover:bg-copper-700"
                         : "border border-ink-900/15 hover:border-ink-900/35"
                     }`}
                   >
@@ -429,7 +429,7 @@ export default function Home() {
                   load it in and walk your team through their own book — not a
                   demo account full of invented companies.
                 </p>
-                <p className="mt-8 text-sm text-white/45">
+                <p className="mt-8 text-sm text-white/60">
                   Prefer email?{" "}
                   <a
                     href={`mailto:${CONTACT_EMAIL}`}

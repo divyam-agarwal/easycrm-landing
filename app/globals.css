@@ -29,6 +29,11 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
+  :focus-visible {
+    outline: 2px solid var(--color-copper-400);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
   ::selection {
     background: var(--color-copper-500);
     color: #fff;
