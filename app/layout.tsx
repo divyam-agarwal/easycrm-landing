@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://crm.saatvikminchem.com"),
   title: { default: title, template: "%s — EasyCRM" },
   description,
+  alternates: { canonical: "/" },
   keywords: [
     "chemical distributor CRM",
     "minerals trading software",

@@ -1,7 +1,3 @@
-"use client";
-
-import { useState, type FormEvent } from "react";
-
 const inputClass =
   "w-full rounded-md border border-white/15 bg-slate-900 px-3.5 py-2.5 text-white placeholder:text-white/50 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400";
 
@@ -10,13 +6,11 @@ function Field({
   name,
   type = "text",
   autoComplete,
-  required = true,
 }: {
   label: string;
   name: string;
   type?: string;
   autoComplete?: string;
-  required?: boolean;
 }) {
   return (
     <div>
@@ -28,11 +22,49 @@ function Field({
         name={name}
         type={type}
         autoComplete={autoComplete}
-        required={required}
+        required
         className={inputClass}
       />
     </div>
   );
+}
+
+// No form backend is configured, so the enquiry is composed into the visitor's
+// own mail client. This is deliberately plain DOM rather than a React client
+// component: it keeps the whole page free of the client-side React runtime.
+function handoffScript(email: string) {
+  return `
+(function () {
+  var form = document.getElementById('demo-form');
+  var done = document.getElementById('demo-sent');
+  if (!form || !done) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = function (id) {
+      var el = document.getElementById(id);
+      return el ? el.value.trim() : '';
+    };
+    var subject = 'Demo request \\u2014 ' + (v('company') || v('name'));
+    var body = [
+      'Name: ' + v('name'),
+      'Company: ' + v('company'),
+      'Email: ' + v('email'),
+      'Phone: ' + v('phone'),
+      '',
+      'What they trade in:',
+      v('about') || '(not specified)'
+    ].join('\\n');
+    window.location.href = 'mailto:${email}?subject=' +
+      encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    form.hidden = true;
+    done.hidden = false;
+  });
+  var back = document.getElementById('demo-back');
+  if (back) back.addEventListener('click', function () {
+    done.hidden = true;
+    form.hidden = false;
+  });
+})();`;
 }
 
 export function DemoForm({
@@ -42,37 +74,52 @@ export function DemoForm({
   endpoint: string;
   email: string;
 }) {
-  const [handedOff, setHandedOff] = useState(false);
+  return (
+    <>
+      <form
+        id="demo-form"
+        {...(endpoint ? { action: endpoint, method: "post" } : {})}
+        className="rounded-xl border border-white/12 bg-white/[0.04] p-6 sm:p-8"
+      >
+        <div className="grid gap-5 sm:grid-cols-2">
+          <Field label="Name" name="name" autoComplete="name" />
+          <Field label="Company" name="company" autoComplete="organization" />
+          <Field
+            label="Work email"
+            name="email"
+            type="email"
+            autoComplete="email"
+          />
+          <Field label="Phone" name="phone" type="tel" autoComplete="tel" />
+        </div>
+        <div className="mt-5">
+          <label htmlFor="about" className="mb-2 block text-sm text-white/70">
+            What do you trade in?
+          </label>
+          <textarea
+            id="about"
+            name="about"
+            rows={3}
+            placeholder="e.g. industrial minerals, 40 active buyers, 6 sales staff"
+            className={inputClass}
+          />
+        </div>
+        <button
+          type="submit"
+          className="mt-6 w-full rounded-md bg-teal-600 px-5 py-3 text-sm font-medium transition-colors hover:bg-teal-700"
+        >
+          Request a demo
+        </button>
+        <p className="mt-3 text-center text-xs text-white/60">
+          We reply within one working day.
+        </p>
+      </form>
 
-  // With no form backend configured, compose the enquiry into the visitor's
-  // own mail client. Set `endpoint` to post to Formspree/Resend instead.
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    if (endpoint) return;
-    event.preventDefault();
-
-    const data = new FormData(event.currentTarget);
-    const value = (key: string) => String(data.get(key) ?? "").trim();
-
-    const subject = `Demo request — ${value("company") || value("name")}`;
-    const body = [
-      `Name: ${value("name")}`,
-      `Company: ${value("company")}`,
-      `Email: ${value("email")}`,
-      `Phone: ${value("phone")}`,
-      "",
-      "What they trade in:",
-      value("about") || "(not specified)",
-    ].join("\n");
-
-    window.location.href = `mailto:${email}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
-    setHandedOff(true);
-  }
-
-  if (handedOff) {
-    return (
-      <div className="flex flex-col items-start justify-center rounded-xl border border-teal-500/40 bg-white/[0.04] p-8 sm:p-10">
+      <div
+        id="demo-sent"
+        hidden
+        className="flex flex-col items-start justify-center rounded-xl border border-teal-600/40 bg-white/[0.04] p-8 sm:p-10"
+      >
         <p className="font-mono text-xs uppercase tracking-[0.16em] text-teal-400">
           Almost there
         </p>
@@ -92,53 +139,14 @@ export function DemoForm({
         </p>
         <button
           type="button"
-          onClick={() => setHandedOff(false)}
+          id="demo-back"
           className="mt-6 text-sm text-white/60 underline underline-offset-4 hover:text-white"
         >
           Back to the form
         </button>
       </div>
-    );
-  }
 
-  return (
-    <form
-      {...(endpoint ? { action: endpoint, method: "post" } : {})}
-      onSubmit={handleSubmit}
-      className="rounded-xl border border-white/12 bg-white/[0.04] p-6 sm:p-8"
-    >
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Name" name="name" autoComplete="name" />
-        <Field label="Company" name="company" autoComplete="organization" />
-        <Field
-          label="Work email"
-          name="email"
-          type="email"
-          autoComplete="email"
-        />
-        <Field label="Phone" name="phone" type="tel" autoComplete="tel" />
-      </div>
-      <div className="mt-5">
-        <label htmlFor="about" className="mb-2 block text-sm text-white/70">
-          What do you trade in?
-        </label>
-        <textarea
-          id="about"
-          name="about"
-          rows={3}
-          placeholder="e.g. industrial minerals, 40 active buyers, 6 sales staff"
-          className={inputClass}
-        />
-      </div>
-      <button
-        type="submit"
-        className="mt-6 w-full rounded-md bg-teal-600 px-5 py-3 text-sm font-medium transition-colors hover:bg-teal-700"
-      >
-        Request a demo
-      </button>
-      <p className="mt-3 text-center text-xs text-white/60">
-        We reply within one working day.
-      </p>
-    </form>
+      <script dangerouslySetInnerHTML={{ __html: handoffScript(email) }} />
+    </>
   );
 }

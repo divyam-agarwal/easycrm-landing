@@ -6,6 +6,7 @@ import { DemoForm } from "./components/demo-form";
 const FORM_ENDPOINT = "";
 
 const CONTACT_EMAIL = "admin@saatvikminchem.com";
+const SITE_URL = "https://crm.saatvikminchem.com";
 
 const features = [
   {
@@ -126,9 +127,69 @@ const faqs = [
   },
 ];
 
+
+// Structured data, derived from the arrays above so it always matches what is
+// rendered. Only claims we can actually support — no ratings or review counts.
+function StructuredData() {
+  const organization = {
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: "EasyCRM",
+    url: SITE_URL,
+    email: CONTACT_EMAIL,
+    description:
+      "CRM software for chemicals and minerals distributors, covering quotations, batch traceability and repeat-buyer follow-ups.",
+  };
+
+  const software = {
+    "@type": "SoftwareApplication",
+    "@id": `${SITE_URL}/#software`,
+    name: "EasyCRM",
+    applicationCategory: "BusinessApplication",
+    applicationSubCategory: "Customer Relationship Management",
+    operatingSystem: "Web",
+    url: SITE_URL,
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    description:
+      "A CRM built for chemicals and minerals distributors: grade-aware quotations, batch and COA traceability, credit terms and reorder-risk alerts.",
+    offers: tiers
+      .filter((t) => t.price.startsWith("\u20b9"))
+      .map((t) => ({
+        "@type": "Offer",
+        name: t.name,
+        price: t.price.replace(/[^0-9]/g, ""),
+        priceCurrency: "INR",
+        description: t.body,
+      })),
+  };
+
+  const faqPage = {
+    "@type": "FAQPage",
+    "@id": `${SITE_URL}/#faq`,
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [organization, software, faqPage],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
+    />
+  );
+}
+
 export default function Home() {
   return (
     <>
+      <StructuredData />
       <Header />
 
       <main id="top">
