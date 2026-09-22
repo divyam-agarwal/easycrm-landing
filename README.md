@@ -46,6 +46,18 @@ one-file change.
 The domain is registered at Squarespace and uses Squarespace nameservers.
 Google Workspace email runs off the same zone.
 
+Current layout:
+
+| Host | Serves |
+| --- | --- |
+| `crm.saatvikminchem.com` | this site, via GitHub Pages (`CNAME` → `divyam-agarwal.github.io`) |
+| `saatvikminchem.com` | 301 → `crm.saatvikminchem.com`, via a Squarespace domain-forwarding rule (paths preserved) |
+| `www.saatvikminchem.com` | same 301 |
+
+The forwarding rule re-creates Squarespace's own apex A records and a
+`www` CNAME pointing at its forwarding hosts — that is expected, and it
+does not touch the `crm` CNAME or the MX/SPF/DKIM records.
+
 1. Squarespace → Domains → saatvikminchem.com → **disconnect from the parking
    page**. Until this is done the auto-managed A records cannot be removed.
 2. Add this record:
