@@ -67,5 +67,5 @@ Google Workspace email runs off the same zone.
 - `FORM_ENDPOINT` in `app/page.tsx` is empty, so the demo form composes a
   prefilled email in the visitor's mail client. Set it to a Formspree (or
   similar) endpoint for proper server-side capture.
-- `CONTACT_EMAIL` is `hello@saatvikminchem.com` — confirm that mailbox exists.
+- `CONTACT_EMAIL` is `admin@saatvikminchem.com` — confirm that mailbox exists.
 - Pricing figures are a working proposal, not a decided price list.

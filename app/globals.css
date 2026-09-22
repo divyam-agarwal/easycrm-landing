@@ -1,19 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink-950: #070d18;
-  --color-ink-900: #0a1220;
-  --color-ink-800: #101c30;
-  --color-ink-700: #1b2b46;
-  --color-ink-600: #2d4063;
+  /* Cool navy-slate base */
+  --color-slate-950: #0a1626;
+  --color-slate-900: #0e1d31;
+  --color-slate-800: #152840;
+  --color-slate-700: #203352;
+  --color-slate-600: #33486b;
 
-  --color-copper-50: #fdf5f0;
-  --color-copper-100: #f9e5d8;
-  --color-copper-300: #e5a97d;
-  --color-copper-400: #d98a52;
-  --color-copper-500: #cc6b35;
-  --color-copper-600: #b25a29;
-  --color-copper-700: #8f4720;
+  /* Deep teal accent. teal-600 clears 4.5:1 against white for button fills;
+     teal-300 is the light-on-dark variant. */
+  --color-teal-50: #eefaf8;
+  --color-teal-100: #d3f2ed;
+  --color-teal-300: #6fd8cb;
+  --color-teal-400: #35bdac;
+  --color-teal-500: #17a094;
+  --color-teal-600: #0f766e;
+  --color-teal-700: #0b5a54;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -25,17 +28,17 @@
   }
   body {
     background: #ffffff;
-    color: var(--color-ink-900);
+    color: var(--color-slate-900);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
   :focus-visible {
-    outline: 2px solid var(--color-copper-400);
+    outline: 2px solid var(--color-teal-400);
     outline-offset: 3px;
     border-radius: 2px;
   }
   ::selection {
-    background: var(--color-copper-500);
+    background: var(--color-teal-600);
     color: #fff;
   }
 }

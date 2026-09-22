@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 
 const inputClass =
-  "w-full rounded-md border border-white/15 bg-ink-900 px-3.5 py-2.5 text-white placeholder:text-white/50 focus:border-copper-400 focus:outline-none focus:ring-1 focus:ring-copper-400";
+  "w-full rounded-md border border-white/15 bg-slate-900 px-3.5 py-2.5 text-white placeholder:text-white/50 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400";
 
 function Field({
   label,
@@ -72,8 +72,8 @@ export function DemoForm({
 
   if (handedOff) {
     return (
-      <div className="flex flex-col items-start justify-center rounded-xl border border-copper-500/40 bg-white/[0.04] p-8 sm:p-10">
-        <p className="font-mono text-xs uppercase tracking-[0.16em] text-copper-400">
+      <div className="flex flex-col items-start justify-center rounded-xl border border-teal-500/40 bg-white/[0.04] p-8 sm:p-10">
+        <p className="font-mono text-xs uppercase tracking-[0.16em] text-teal-400">
           Almost there
         </p>
         <h3 className="mt-3 text-2xl font-semibold tracking-tight">
@@ -84,7 +84,7 @@ export function DemoForm({
           opened, write to us directly at{" "}
           <a
             href={`mailto:${email}`}
-            className="text-copper-300 underline underline-offset-4 hover:text-copper-100"
+            className="text-teal-300 underline underline-offset-4 hover:text-teal-100"
           >
             {email}
           </a>
@@ -132,7 +132,7 @@ export function DemoForm({
       </div>
       <button
         type="submit"
-        className="mt-6 w-full rounded-md bg-copper-600 px-5 py-3 text-sm font-medium transition-colors hover:bg-copper-700"
+        className="mt-6 w-full rounded-md bg-teal-600 px-5 py-3 text-sm font-medium transition-colors hover:bg-teal-700"
       >
         Request a demo
       </button>

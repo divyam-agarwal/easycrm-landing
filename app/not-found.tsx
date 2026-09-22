@@ -7,9 +7,9 @@ export default function NotFound() {
   return (
     <>
       <Header />
-      <main className="flex flex-1 items-center bg-ink-950 py-28 text-white">
+      <main className="flex flex-1 items-center bg-slate-950 py-28 text-white">
         <Container>
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-copper-400">
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-teal-400">
             404
           </p>
           <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
@@ -21,7 +21,7 @@ export default function NotFound() {
           </p>
           <Link
             href="/"
-            className="mt-8 inline-block rounded-md bg-copper-600 px-6 py-3 text-sm font-medium transition-colors hover:bg-copper-700"
+            className="mt-8 inline-block rounded-md bg-teal-600 px-6 py-3 text-sm font-medium transition-colors hover:bg-teal-700"
           >
             Back to the homepage
           </Link>

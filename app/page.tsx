@@ -5,7 +5,7 @@ import { DemoForm } from "./components/demo-form";
 // Until this is set, the demo form falls back to an email link.
 const FORM_ENDPOINT = "";
 
-const CONTACT_EMAIL = "hello@saatvikminchem.com";
+const CONTACT_EMAIL = "admin@saatvikminchem.com";
 
 const features = [
   {
@@ -133,14 +133,14 @@ export default function Home() {
 
       <main id="top">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-ink-950 text-white">
+        <section className="relative overflow-hidden bg-slate-950 text-white">
           <div
             aria-hidden
-            className="pointer-events-none absolute -top-40 left-1/2 h-[34rem] w-[64rem] -translate-x-1/2 rounded-full bg-copper-500/18 blur-[120px]"
+            className="pointer-events-none absolute -top-40 left-1/2 h-[34rem] w-[64rem] -translate-x-1/2 rounded-full bg-teal-500/20 blur-[120px]"
           />
           <Container className="relative py-20 sm:py-28">
             <div className="max-w-3xl">
-              <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-copper-300">
+              <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-teal-300">
                 Built for chemicals &amp; minerals
               </p>
               <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.4rem]">
@@ -155,7 +155,7 @@ export default function Home() {
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <a
                   href="#demo"
-                  className="rounded-md bg-copper-600 px-6 py-3 text-center text-sm font-medium transition-colors hover:bg-copper-700"
+                  className="rounded-md bg-teal-600 px-6 py-3 text-center text-sm font-medium transition-colors hover:bg-teal-700"
                 >
                   Book a 20-minute demo
                 </a>
@@ -185,7 +185,7 @@ export default function Home() {
                   <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-white/60">
                     {label}
                   </p>
-                  <p className="mt-1.5 text-xl font-semibold text-copper-300">
+                  <p className="mt-1.5 text-xl font-semibold text-teal-300">
                     {value}
                   </p>
                 </div>
@@ -195,7 +195,7 @@ export default function Home() {
         </section>
 
         {/* Problem */}
-        <section className="border-b border-ink-900/10 bg-copper-50/60 py-20 sm:py-24">
+        <section className="border-b border-slate-900/10 bg-teal-50/60 py-20 sm:py-24">
           <Container>
             <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
               <div>
@@ -205,7 +205,7 @@ export default function Home() {
                   places.
                 </h2>
               </div>
-              <div className="space-y-5 text-lg leading-relaxed text-ink-700">
+              <div className="space-y-5 text-lg leading-relaxed text-slate-700">
                 <p>
                   The enquiry came in on WhatsApp. The quote is in someone&apos;s
                   Sent folder. The agreed rate was settled on a call. The COA
@@ -218,7 +218,7 @@ export default function Home() {
                   actually works. Generic CRMs assume a software sales cycle:
                   clean stages, credit cards, no batch numbers, no 90-day terms.
                 </p>
-                <p className="font-medium text-ink-900">
+                <p className="font-medium text-slate-900">
                   EasyCRM starts from your workflow instead of asking you to
                   adopt someone else&apos;s.
                 </p>
@@ -236,13 +236,13 @@ export default function Home() {
                 Everything the desk needs. Nothing it doesn&apos;t.
               </h2>
             </div>
-            <div className="mt-14 grid gap-px overflow-hidden rounded-xl bg-ink-900/10 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-14 grid gap-px overflow-hidden rounded-xl bg-slate-900/10 sm:grid-cols-2 lg:grid-cols-3">
               {features.map((f) => (
                 <div key={f.title} className="bg-white p-7 sm:p-8">
                   <h3 className="text-lg font-semibold tracking-tight">
                     {f.title}
                   </h3>
-                  <p className="mt-3 leading-relaxed text-ink-700">{f.body}</p>
+                  <p className="mt-3 leading-relaxed text-slate-700">{f.body}</p>
                 </div>
               ))}
             </div>
@@ -252,11 +252,11 @@ export default function Home() {
         {/* How it works */}
         <section
           id="how"
-          className="scroll-mt-16 bg-ink-950 py-20 text-white sm:py-28"
+          className="scroll-mt-16 bg-slate-950 py-20 text-white sm:py-28"
         >
           <Container>
             <div className="max-w-2xl">
-              <p className="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-copper-400">
+              <p className="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-teal-400">
                 How it works
               </p>
               <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
@@ -266,7 +266,7 @@ export default function Home() {
             <ol className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
               {steps.map((s) => (
                 <li key={s.n} className="border-t border-white/15 pt-6">
-                  <span className="font-mono text-sm text-copper-400">
+                  <span className="font-mono text-sm text-teal-400">
                     {s.n}
                   </span>
                   <h3 className="mt-3 text-xl font-semibold tracking-tight">
@@ -287,7 +287,7 @@ export default function Home() {
               <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
                 Priced for a trading desk, not a tech company.
               </h2>
-              <p className="mt-4 text-lg text-ink-700">
+              <p className="mt-4 text-lg text-slate-700">
                 Billed monthly. Cancel any time. All plans include the full
                 enquiry-to-order pipeline.
               </p>
@@ -298,8 +298,8 @@ export default function Home() {
                   key={t.name}
                   className={`flex flex-col rounded-xl border p-7 sm:p-8 ${
                     t.featured
-                      ? "border-copper-500 bg-ink-950 text-white shadow-xl shadow-ink-900/10"
-                      : "border-ink-900/12 bg-white"
+                      ? "border-teal-500 bg-slate-950 text-white shadow-xl shadow-slate-900/10"
+                      : "border-slate-900/12 bg-white"
                   }`}
                 >
                   <div className="flex items-center justify-between gap-3">
@@ -307,14 +307,14 @@ export default function Home() {
                       {t.name}
                     </h3>
                     {t.featured && (
-                      <span className="rounded-full bg-copper-600 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
+                      <span className="rounded-full bg-teal-600 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider">
                         Most picked
                       </span>
                     )}
                   </div>
                   <p
                     className={`mt-1.5 text-sm ${
-                      t.featured ? "text-white/55" : "text-ink-600"
+                      t.featured ? "text-white/55" : "text-slate-600"
                     }`}
                   >
                     {t.note}
@@ -325,7 +325,7 @@ export default function Home() {
                     </span>
                     <span
                       className={
-                        t.featured ? "text-white/55" : "text-ink-600"
+                        t.featured ? "text-white/55" : "text-slate-600"
                       }
                     >
                       {t.unit}
@@ -333,7 +333,7 @@ export default function Home() {
                   </p>
                   <p
                     className={`mt-4 leading-relaxed ${
-                      t.featured ? "text-white/70" : "text-ink-700"
+                      t.featured ? "text-white/70" : "text-slate-700"
                     }`}
                   >
                     {t.body}
@@ -344,14 +344,14 @@ export default function Home() {
                         <span
                           aria-hidden
                           className={
-                            t.featured ? "text-copper-400" : "text-copper-500"
+                            t.featured ? "text-teal-400" : "text-teal-500"
                           }
                         >
                           ✓
                         </span>
                         <span
                           className={
-                            t.featured ? "text-white/80" : "text-ink-700"
+                            t.featured ? "text-white/80" : "text-slate-700"
                           }
                         >
                           {f}
@@ -363,8 +363,8 @@ export default function Home() {
                     href="#demo"
                     className={`mt-8 rounded-md px-5 py-3 text-center text-sm font-medium transition-colors ${
                       t.featured
-                        ? "bg-copper-600 text-white hover:bg-copper-700"
-                        : "border border-ink-900/15 hover:border-ink-900/35"
+                        ? "bg-teal-600 text-white hover:bg-teal-700"
+                        : "border border-slate-900/15 hover:border-slate-900/35"
                     }`}
                   >
                     {t.cta}
@@ -378,7 +378,7 @@ export default function Home() {
         {/* FAQ */}
         <section
           id="faq"
-          className="scroll-mt-16 border-y border-ink-900/10 bg-copper-50/60 py-20 sm:py-28"
+          className="scroll-mt-16 border-y border-slate-900/10 bg-teal-50/60 py-20 sm:py-28"
         >
           <Container>
             <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
@@ -388,19 +388,19 @@ export default function Home() {
                   The questions worth asking before you switch.
                 </h2>
               </div>
-              <div className="divide-y divide-ink-900/12 border-y border-ink-900/12">
+              <div className="divide-y divide-slate-900/12 border-y border-slate-900/12">
                 {faqs.map((f) => (
                   <details key={f.q} className="group py-5">
                     <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-lg font-medium tracking-tight marker:content-none">
                       {f.q}
                       <span
                         aria-hidden
-                        className="mt-1 shrink-0 text-copper-500 transition-transform group-open:rotate-45"
+                        className="mt-1 shrslate-0 text-teal-500 transition-transform group-open:rotate-45"
                       >
                         +
                       </span>
                     </summary>
-                    <p className="mt-3 max-w-2xl leading-relaxed text-ink-700">
+                    <p className="mt-3 max-w-2xl leading-relaxed text-slate-700">
                       {f.a}
                     </p>
                   </details>
@@ -413,12 +413,12 @@ export default function Home() {
         {/* Demo / CTA */}
         <section
           id="demo"
-          className="scroll-mt-16 bg-ink-950 py-20 text-white sm:py-28"
+          className="scroll-mt-16 bg-slate-950 py-20 text-white sm:py-28"
         >
           <Container>
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
               <div>
-                <p className="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-copper-400">
+                <p className="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-teal-400">
                   Book a demo
                 </p>
                 <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
@@ -433,7 +433,7 @@ export default function Home() {
                   Prefer email?{" "}
                   <a
                     href={`mailto:${CONTACT_EMAIL}`}
-                    className="text-copper-300 underline underline-offset-4 hover:text-copper-100"
+                    className="text-teal-300 underline underline-offset-4 hover:text-teal-100"
                   >
                     {CONTACT_EMAIL}
                   </a>
