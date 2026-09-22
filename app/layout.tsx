@@ -10,7 +10,7 @@ const description =
   "Quotations, grade specs, batch-linked orders and repeat-buyer follow-ups in one place. The CRM that understands tonnage, COAs and 90-day payment terms.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://saatvikminchem.com"),
+  metadataBase: new URL("https://crm.saatvikminchem.com"),
   title: { default: title, template: "%s — EasyCRM" },
   description,
   keywords: [
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    url: "https://saatvikminchem.com",
+    url: "https://crm.saatvikminchem.com",
     siteName: "EasyCRM",
     type: "website",
     locale: "en_IN",

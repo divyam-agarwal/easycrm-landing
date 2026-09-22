@@ -3,7 +3,7 @@
 Marketing site for EasyCRM, a CRM positioned for chemicals & minerals
 distributors.
 
-**Live at <https://saatvikminchem.com>** — deployed from `main` via GitHub Pages.
+**Live at <https://crm.saatvikminchem.com>** — deployed from `main` via GitHub Pages.
 
 ## Stack
 
@@ -48,17 +48,16 @@ Google Workspace email runs off the same zone.
 
 1. Squarespace → Domains → saatvikminchem.com → **disconnect from the parking
    page**. Until this is done the auto-managed A records cannot be removed.
-2. Add these records (GitHub Pages' apex IPs are fixed):
+2. Add this record:
 
    | Type | Host | Value |
    | --- | --- | --- |
-   | A | `@` | `185.199.108.153` |
-   | A | `@` | `185.199.109.153` |
-   | A | `@` | `185.199.110.153` |
-   | A | `@` | `185.199.111.153` |
-   | CNAME | `www` | `divyam-agarwal.github.io` |
+   | CNAME | `crm` | `divyam-agarwal.github.io` |
 
-3. Then: `echo saatvikminchem.com > public/CNAME && git commit && git push`
+   A subdomain uses a CNAME; only an apex domain needs GitHub's four
+   A records (185.199.108–111.153).
+
+3. Then put the host in `public/CNAME` and push.
 4. **Leave the MX and SPF TXT records untouched** — they carry Google
    Workspace email. Removing them silently breaks mail.
 

@@ -28,7 +28,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       # A custom domain serves from the root; a project page serves from
       # /<repo>. Adding public/CNAME is therefore the only change needed
-      # to move this site onto saatvikminchem.com.
+      # to move this site onto crm.saatvikminchem.com.
       - name: Resolve base path
         id: base
         run: |
